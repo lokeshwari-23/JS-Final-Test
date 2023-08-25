@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #notes {
+        height: 500px;
+        width: 300px;
+        border-radius: 10px;
+
+    }
+
+    #btn,
+    #btn1 {
+
+        border-radius: 10px;
+        width: 150px;
+        height: 40px;
+    }
+
+    #main_container {
+        padding: 20px;
+    
+        border-radius: 20px;
+    }
+
+    .popupbg {
+        display: none;
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+    }
+
+    #popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        padding: 35px;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        overflow-y: scroll;
+    }
+</style>
+
+<body>
+
+    <section id="main_container">
+        <div id="container1">
+            <h1>user Management</h1>
+            <button id="btn">add new user</button>
+            <div id="notes">
+                <h4>Registered user</h4>
+                <div id="content"></div>
+            </div>
+        </div>
+
+        <form id="popup" class="myform">
+            <label>user</label>
+            <input type="text" id="myInputField" placeholder="Enter your name" required>
+            <label>Email</label>
+            <input type="email" id="title2" placeholder="Enter your email">
+            <button type="submit" id="btn1">submit</button>
+        </form>
+        <div id="popupbg" class="popupbg"></div>
+    </section>
+
+    <script>
+        let arr = [];
+        let indexx = 0;
+        let popup = document.getElementById("popup");
+        let popupbg = document.getElementById("popupbg");
+        let submit = document.getElementById("btn1");
+
+        btn.addEventListener("click", (event) => {
+            event.preventDefault();
+            // alert("hiiiiiii")
+            // popup.style.display="block";
+            openPopup();
+            document.getElementById("myInputField").value = "";
+            document.getElementById("title2").value = "";
+
+        });
+
+        submit.addEventListener("click", (event) => {
+            event.preventDefault();
+            let title = document.getElementById("myInputField").value;
+            console.log(title);
+            let Description = document.getElementById("title2").value;
+            console.log(Description);
+            if (submit.innerText === "submit") {
+
+                let obj = {
+                    val: title,
+                    desc: Description
+                }
+                arr.push(obj);
+                console.log(obj);
+                display();
+                closePopup();
+                if (title.length>0 && Description.length>0) {
+                    display();
+                }
+                else {
+                    alert("Please enter")
+                }
+            }
+            else {
+                arr[indexx]['val'] =title;
+                arr[indexx]['desc'] =Description;
+                submit.innerText = "submit";
+                closePopup();
+
+                if (title.length>0 && Description.length>0) {
+                    display();
+                }
+                else {
+                    alert("Please enter")
+                }
+            }
+        });
+
+        function display() {
+            let content = document.getElementById("content");
+            content.innerHTML = "";
+            arr.forEach((item, index) => {
+                let divv = document.createElement("div")
+
+                let heading = document.createElement("h1");
+                heading.innerText = item.val;
+
+                let para = document.createElement("p");
+                para.innerText = item.desc;
+
+                let edit = document.createElement("button");
+                edit.innerText = "Edit";
+                let delee = document.createElement("button");
+                delee.innerText = "Delete";
+
+                edit.addEventListener("click", (event) => {
+                    openPopup();
+                    document.getElementById("myInputField").value = item.val;
+                    document.getElementById("title2").value = item.desc;
+                    submit.innerText = "Update";
+                    indexx = index;
+                });
+                delee.addEventListener("click", (event) => {
+                    arr.splice(index, 1)
+                    display();
+                });
+                divv.appendChild(heading);
+                divv.appendChild(para);
+                divv.appendChild(edit);
+                divv.appendChild(delee);
+                content.appendChild(divv);
+            });
+        }
+        function openPopup() {
+            popup.style.display = "block";
+            popupbg.style.display = "block";
+        }
+        function closePopup() {
+            popup.style.display = "none";
+            popupbg.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

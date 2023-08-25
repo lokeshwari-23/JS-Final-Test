@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Hover Effect</title>
+    <style>
+      
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .image-gallery img {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery with Hover Effect</h1>
+    
+    <div class="image-gallery">
+      
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxJ59TpEIhRlvkPu_QIL6lbv7AMjGkGdjHC7d8AOq0_Q&s"alt="Image 1">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFjbzwN-gqxpyalgMRwwfNVsbJFPXMus6A8EEl2dYG9A&s" alt="Image 2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbCDZZfnTfo6P6OVAR4PEbLGDBPs3hkIocmS18c9Y6MA&s" alt="Image 3">
+      
+    </div>
+</body>
+</html>

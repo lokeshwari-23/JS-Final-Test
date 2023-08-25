@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+</head>
+<body>
+    <button id="button">submit</button>
+
+    <script>
+        const button = document.getElementById('button');
+        let clicked = false;
+
+        button.addEventListener('click', () => {
+            if (clicked) {
+                button.textContent = 'submit';
+            } else {
+                button.textContent = 'response stored successfully';
+            }
+            clicked = !clicked;
+        });
+    </script>
+</body>
+</html>

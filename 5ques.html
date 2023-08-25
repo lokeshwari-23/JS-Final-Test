@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+
+<script>
+	function coordinate(event) {
+		var x=event.clientX;
+		var y=event.clientY;
+		document.getElementById("X").value=x;
+		document.getElementById("Y").value=y;
+	}
+</script>
+
+<body onmousemove="coordinate(event)">
+	X-coordinate
+	<input type="text" id="X">
+	Y-coordinate
+	<input type="text" id="Y">
+</body>
+
+</html>
