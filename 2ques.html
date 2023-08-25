@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,15 +29,11 @@
 
     <div id="user-content" style="display: none;">
         <h2>Welcome, <span id="user-username"></span>!</h2>
-        <p>This is personalized content for logged-in users.</p>
+        <p>user/p>
     </div>
 
     <script>
      
-        const users = [
-            { username: 'priya', password: 'priyaaa' },
-            { username: 'karthick', password: 'karthick' }
-        ];
 
         const registrationForm = document.getElementById('registration-form');
         const loginForm = document.getElementById('login-form');
@@ -45,88 +42,9 @@
         const userUsername = document.getElementById('user-username');
 
 
-        function checkLoggedIn() {
-            const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-            if (isLoggedIn) {
-                showLoggedInContent();
-            } else {
-                showLoggedOutContent();
-            }
-        }
+   </script>
 
-
-        function showLoggedInContent() {
-            registrationForm.style.display = 'none';
-            loginForm.style.display = 'none';
-            logoutBtn.style.display = 'block';
-            userContent.style.display = 'block';
-            const username = sessionStorage.getItem('username');
-            userUsername.textContent = username;
-        }
-
-      
-        function showLoggedOutContent() {
-            registrationForm.style.display = 'block';
-            loginForm.style.display = 'block';
-            logoutBtn.style.display = 'none';
-            userContent.style.display = 'none';
-        }
-
-   
-        registrationForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const regUsername = document.getElementById('reg-username').value;
-            const regPassword = document.getElementById('reg-password').value;
-            
-           
-            users.push({ username: regUsername, password: regPassword });
-
-        
-            registrationForm.reset();
-
-         
-            login(regUsername, regPassword);
-        });
 
   
-        loginForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const loginUsername = document.getElementById('login-username').value;
-            const loginPassword = document.getElementById('login-password').value;
-
-           
-            const user = users.find(u => u.username === loginUsername && u.password === loginPassword);
-
-            if (user) {
-                login(loginUsername);
-            } else {
-                alert('Invalid username or password');
-            }
-
-  
-            loginForm.reset();
-        });
-
-        
-        logoutBtn.addEventListener('click', function () {
-            logout();
-        });
-
-        
-        function login(username) {
-            sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('username', username);
-            checkLoggedIn();
-        }
-
-       
-        function logout() {
-            sessionStorage.removeItem('isLoggedIn');
-            sessionStorage.removeItem('username');
-            checkLoggedIn();
-        }
-
-        checkLoggedIn();
-    </script>
 </body>
 </html>
